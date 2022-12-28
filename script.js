@@ -11,6 +11,12 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
             numbersButton(this.innerText);
             break;
     }
+
+    switch (this.id) {
+        case 'decimal-separator':
+            decimalSeparatorButton();
+            break;
+    }
 }));
 
 
@@ -24,6 +30,22 @@ function numbersButton(number) {
     }
 };
 
+function decimalSeparatorButton() {
+    if (!numberInput.includes('.')) {
+        numberInput += '.';
+        displayNumbers(numberInput);
+    }
+}
+
 function displayNumbers(n) {
-    display.innerText = Number(n);
+    if (n === '.') {
+        numberInput = '0.';
+        display.innerText = numberInput;
+    }
+    else if (n.indexOf('.') !== -1) {
+        display.innerText = Number(n.slice(0, n.indexOf('.'))) + n.substring(n.indexOf('.'));
+    }
+    else {
+        display.innerText = Number(n);
+    }
 };
