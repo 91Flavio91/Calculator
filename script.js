@@ -15,7 +15,7 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
             numbersButton(this.innerText);
             break;
 
-            case 'operators':
+        case 'operators':
             operatorsButton();
             numberInput = '';
             operator = this.attributes[1].value;
@@ -25,6 +25,10 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
     switch (this.id) {
         case 'decimal-separator':
             decimalSeparatorButton();
+            break;
+
+        case 'equal':
+            equalButton();
             break;
     }
 }));
@@ -65,6 +69,30 @@ function operatorsButton() {
         numbers.push(Number(numberInput));
     }
 }
+
+function equalButton() {
+    if (numberInput !== '' && numbers.length > 0) {
+        numbers.push(Number(numberInput));
+        lastNumberInput = numberInput;
+        numberInput = '';
+        operate();
+    }
+    else if (numberInput !== '' && result !== undefined) {
+        if (lastNumberInput !== undefined) {
+            return;
+        }
+        else {
+            numbers.push(result, Number(numberInput));
+            lastNumberInput = numberInput;
+            numberInput = '';
+            operate();
+        }
+    }
+    else if (result !== undefined && lastNumberInput !== undefined) {
+        numbers.push(result, Number(lastNumberInput));
+        operate();
+    }
+};
 
 function decimalSeparatorButton() {
     if (!numberInput.includes('.')) {
