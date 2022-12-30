@@ -27,6 +27,10 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
             decimalSeparatorButton();
             break;
 
+        case 'plus-or-minus':
+            plusOrMinusButton();
+            break;
+
         case 'equal':
             equalButton();
             break;
@@ -101,6 +105,17 @@ function decimalSeparatorButton() {
     }
 }
 
+function plusOrMinusButton() {
+    if (result && !numberInput) {
+        result = result * -1
+        displayNumbers(String(result));
+    }
+    else {
+        numberInput = String(numberInput * -1);
+        displayNumbers(numberInput);
+    }
+};
+
 function operate() {
     switch (operator) {
         case '+':
@@ -136,6 +151,10 @@ function displayNumbers(n) {
     }
     else if (n.indexOf('.') !== -1) {
         display.innerText = Number(n.slice(0, n.indexOf('.'))) + n.substring(n.indexOf('.'));
+    }
+    else if (n === '-') {
+        numberInput = '0';
+        display.innerText = Number(numberInput);
     }
     else {
         display.innerText = Number(n);
