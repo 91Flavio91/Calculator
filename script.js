@@ -34,6 +34,10 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
         case 'equal':
             equalButton();
             break;
+
+        case 'CE':
+            backspaceButton();
+            break;
     }
 }));
 
@@ -116,6 +120,13 @@ function plusOrMinusButton() {
     }
 };
 
+function backspaceButton() {
+    if (numberInput) {
+        numberInput = numberInput.slice(0, numberInput.length - 1);
+        displayNumbers(numberInput);
+    }
+};
+
 function operate() {
     switch (operator) {
         case '+':
@@ -152,7 +163,7 @@ function displayNumbers(n) {
     else if (n.indexOf('.') !== -1) {
         display.innerText = Number(n.slice(0, n.indexOf('.'))) + n.substring(n.indexOf('.'));
     }
-    else if (n === '-') {
+    else if (n === '' || n === '-') {
         numberInput = '0';
         display.innerText = Number(numberInput);
     }
