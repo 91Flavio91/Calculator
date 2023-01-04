@@ -47,6 +47,42 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
     }
 }));
 
+keys.forEach(div => div.addEventListener('mouseup', function () {
+
+    switch (this.className) {
+        case 'numbers press-div':
+            this.classList.remove('press-div');
+            break;
+
+        case 'operators press-div':
+            this.classList.remove('press-div');
+            break;
+    }
+
+    switch (this.id) {
+        case 'ON-C':
+            this.classList.remove('press-div');
+            playSounds(1);
+            break;
+
+        case 'decimal-separator':
+            this.classList.remove('press-div');
+            break;
+
+        case 'plus-or-minus':
+            this.classList.remove('press-div');
+            break;
+
+        case 'equal':
+            this.classList.remove('press-div');
+            break;
+
+        case 'CE':
+            this.classList.remove('press-div');
+            break;
+    }
+}));
+
 
 
 
