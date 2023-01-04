@@ -12,10 +12,12 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
 
     switch (this.className) {
         case 'numbers':
+            this.classList.add('press-div');
             numbersButton(this.innerText);
             break;
 
         case 'operators':
+            this.classList.add('press-div');
             operatorsButton();
             numberInput = '';
             operator = this.attributes[1].value;
@@ -24,18 +26,22 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
 
     switch (this.id) {
         case 'decimal-separator':
+            this.classList.add('press-div');
             decimalSeparatorButton();
             break;
 
         case 'plus-or-minus':
+            this.classList.add('press-div');
             plusOrMinusButton();
             break;
 
         case 'equal':
+            this.classList.add('press-div');
             equalButton();
             break;
 
         case 'CE':
+            this.classList.add('press-div');
             backspaceButton();
             break;
     }
