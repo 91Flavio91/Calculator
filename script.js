@@ -60,11 +60,6 @@ keys.forEach(div => div.addEventListener('mouseup', function () {
     }
 
     switch (this.id) {
-        case 'ON-C':
-            this.classList.remove('press-div');
-            playSounds(1);
-            break;
-
         case 'decimal-separator':
             this.classList.remove('press-div');
             break;
