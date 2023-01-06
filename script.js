@@ -253,26 +253,35 @@ function operate() {
         case '+':
             result = Math.trunc((numbers.reduce((n1, n2) => n1 + n2) * 100)) / 100;
             numbers = [];
-            displayNumbers(String(result));
+            checkNumberLength();
             break;
 
         case '-':
             result = Math.trunc((numbers.reduce((n1, n2) => n1 - n2) * 100)) / 100;
             numbers = [];
-            displayNumbers(String(result));
+            checkNumberLength();
             break;
 
         case '*':
             result = Math.trunc((numbers.reduce((n1, n2) => n1 * n2) * 100)) / 100;
             numbers = [];
-            displayNumbers(String(result));
+            checkNumberLength();
             break;
 
         case '/':
             result = Math.trunc((numbers.reduce((n1, n2) => n1 / n2) * 100)) / 100;
             numbers = [];
-            displayNumbers(String(result));
+            checkNumberLength();
             break;
+    }
+};
+
+function checkNumberLength() {
+    if (result <= 999999999) {
+        displayNumbers(String(result));
+    }
+    else {
+        displayNumbers(Intl.NumberFormat(undefined, { notation: 'scientific' }).format(result).replace('E', 'e'));
     }
 };
 
@@ -287,6 +296,9 @@ function displayNumbers(n) {
     else if (n === '' || n === '-') {
         numberInput = '0';
         display.innerText = Number(numberInput);
+    }
+    else if (n.includes('e')) {
+        display.innerText = n;
     }
     else {
         display.innerText = Number(n);
