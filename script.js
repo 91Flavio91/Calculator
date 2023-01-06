@@ -99,6 +99,7 @@ window.addEventListener('keydown', function (e) {
         case '8':
         case '9':
         case '0':
+            Array.from(keys).find(div => div.id === e.key).classList.add('press-div');
             numbersButton(e.key);
             break;
 
@@ -106,20 +107,24 @@ window.addEventListener('keydown', function (e) {
         case '-':
         case '*':
         case '/':
+            Array.from(keys).filter(div => div.className === 'operators').find(div => div.attributes[1].value === e.key).classList.add('press-div');
             operatorsButton();
             numberInput = '';
             operator = e.key;
             break;
 
         case '=':
+            Array.from(keys).find(div => div.id === 'equal').classList.add('press-div');
             equalButton();
             break;
 
         case '.':
+            Array.from(keys).find(div => div.id === 'decimal-separator').classList.add('press-div');
             decimalSeparatorButton();
             break;
 
         case 'Backspace':
+            Array.from(keys).find(div => div.id === 'CE').classList.add('press-div');
             backspaceButton();
             break;
     }
