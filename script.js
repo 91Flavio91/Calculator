@@ -9,15 +9,14 @@ let lastNumberInput = undefined;
 display.innerText = '';
 
 keys.forEach(div => div.addEventListener('mousedown', function (e) {
+    this.classList.add('press-div');
 
     switch (this.className) {
-        case 'numbers':
-            this.classList.add('press-div');
+        case 'numbers press-div':
             numbersButton(this.innerText);
             break;
 
-        case 'operators':
-            this.classList.add('press-div');
+        case 'operators press-div':
             operatorsButton();
             numberInput = '';
             operator = this.attributes[1].value;
@@ -26,56 +25,25 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
 
     switch (this.id) {
         case 'decimal-separator':
-            this.classList.add('press-div');
             decimalSeparatorButton();
             break;
 
         case 'plus-or-minus':
-            this.classList.add('press-div');
             plusOrMinusButton();
             break;
 
         case 'equal':
-            this.classList.add('press-div');
             equalButton();
             break;
 
         case 'CE':
-            this.classList.add('press-div');
             backspaceButton();
             break;
     }
 }));
 
 keys.forEach(div => div.addEventListener('mouseup', function () {
-
-    switch (this.className) {
-        case 'numbers press-div':
-            this.classList.remove('press-div');
-            break;
-
-        case 'operators press-div':
-            this.classList.remove('press-div');
-            break;
-    }
-
-    switch (this.id) {
-        case 'decimal-separator':
-            this.classList.remove('press-div');
-            break;
-
-        case 'plus-or-minus':
-            this.classList.remove('press-div');
-            break;
-
-        case 'equal':
-            this.classList.remove('press-div');
-            break;
-
-        case 'CE':
-            this.classList.remove('press-div');
-            break;
-    }
+    this.classList.remove('press-div');
 }));
 
 
