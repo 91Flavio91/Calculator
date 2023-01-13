@@ -19,7 +19,7 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
         case 'operators press-div':
             operatorsButton();
             numberInput = '';
-            operator = this.attributes[1].value;
+            operator = this.attributes[3].value;
             break;
     }
 
