@@ -50,6 +50,9 @@ keys.forEach(div => div.addEventListener('mouseup', function () {
 
 
 window.addEventListener('keydown', function (e) {
+    if (Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode))) {
+        Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode)).classList.add('press-div');
+    }
 
     switch (e.key) {
         case '1':
@@ -62,7 +65,6 @@ window.addEventListener('keydown', function (e) {
         case '8':
         case '9':
         case '0':
-            Array.from(keys).find(div => div.id === e.key).classList.add('press-div');
             numbersButton(e.key);
             break;
 
@@ -70,24 +72,20 @@ window.addEventListener('keydown', function (e) {
         case '-':
         case '*':
         case '/':
-            Array.from(keys).filter(div => div.className === 'operators').find(div => div.attributes[1].value === e.key).classList.add('press-div');
             operatorsButton();
             numberInput = '';
             operator = e.key;
             break;
 
         case '=':
-            Array.from(keys).find(div => div.id === 'equal').classList.add('press-div');
             equalButton();
             break;
 
         case '.':
-            Array.from(keys).find(div => div.id === 'decimal-separator').classList.add('press-div');
             decimalSeparatorButton();
             break;
 
         case 'Backspace':
-            Array.from(keys).find(div => div.id === 'CE').classList.add('press-div');
             backspaceButton();
             break;
     }
