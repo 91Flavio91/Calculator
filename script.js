@@ -92,39 +92,8 @@ window.addEventListener('keydown', function (e) {
 });
 
 window.addEventListener('keyup', function (e) {
-
-    switch (e.key) {
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-        case '8':
-        case '9':
-        case '0':
-            Array.from(keys).find(div => div.id === e.key).classList.remove('press-div');
-            break;
-
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-            Array.from(keys).filter(div => div.className === 'operators press-div').find(div => div.attributes[1].value === e.key).classList.remove('press-div');
-            break;
-
-        case '=':
-            Array.from(keys).find(div => div.id === 'equal').classList.remove('press-div');
-            break;
-
-        case '.':
-            Array.from(keys).find(div => div.id === 'decimal-separator').classList.remove('press-div');
-            break;
-
-        case 'Backspace':
-            Array.from(keys).find(div => div.id === 'CE').classList.remove('press-div');
-            break;
+    if (Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode))) {
+        Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode)).classList.remove('press-div');
     }
 });
 
