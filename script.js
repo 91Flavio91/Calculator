@@ -119,6 +119,11 @@ window.addEventListener('keyup', function (e) {
 
 
 
+function playSounds(n) {
+    keySounds[n].currentTime = 0;
+    keySounds[n].play();
+}
+
 function powerButton() {
     powerButtonStatus = 'ON';
     numberInput = '';
