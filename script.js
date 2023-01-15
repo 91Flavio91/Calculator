@@ -11,6 +11,7 @@ let lastNumberInput = undefined;
 display.innerText = '';
 
 keys.forEach(div => div.addEventListener('mousedown', function (e) {
+    playSounds(0);
     this.classList.add('press-div');
 
     switch (this.id) {
@@ -54,6 +55,7 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
 }));
 
 keys.forEach(div => div.addEventListener('mouseup', function () {
+    playSounds(1);
     this.classList.remove('press-div');
 }));
 
@@ -62,6 +64,7 @@ keys.forEach(div => div.addEventListener('mouseup', function () {
 
 window.addEventListener('keydown', function (e) {
     if (Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode))) {
+        playSounds(0);
         Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode)).classList.add('press-div');
     }
 
@@ -113,6 +116,7 @@ window.addEventListener('keydown', function (e) {
 
 window.addEventListener('keyup', function (e) {
     if (Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode))) {
+        playSounds(1);
         Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode)).classList.remove('press-div');
     }
 });
