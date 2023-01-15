@@ -1,6 +1,7 @@
 const keys = document.querySelectorAll('#keys-container div');
 const display = document.getElementById('display');
 
+let powerButtonStatus = 'OFF'
 let numberInput = '';
 let numbers = [];
 let operator = undefined;
@@ -10,6 +11,14 @@ display.innerText = '';
 
 keys.forEach(div => div.addEventListener('mousedown', function (e) {
     this.classList.add('press-div');
+
+    switch (this.id) {
+        case 'ON-C':
+            powerButton()
+            break;
+    }
+
+    if (powerButtonStatus === 'ON') {
 
     switch (this.className) {
         case 'numbers press-div':
@@ -40,6 +49,7 @@ keys.forEach(div => div.addEventListener('mousedown', function (e) {
             backspaceButton();
             break;
     }
+}
 }));
 
 keys.forEach(div => div.addEventListener('mouseup', function () {
@@ -53,6 +63,14 @@ window.addEventListener('keydown', function (e) {
     if (Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode))) {
         Array.from(keys).find(div => (Number(div.attributes[0].value) === e.keyCode) || (Number(div.attributes[1].value) === e.keyCode)).classList.add('press-div');
     }
+
+    switch (e.key) {
+        case 'Enter':
+            powerButton();
+            break;
+    }
+
+    if (powerButtonStatus === 'ON') {
 
     switch (e.key) {
         case '1':
@@ -89,6 +107,7 @@ window.addEventListener('keydown', function (e) {
             backspaceButton();
             break;
     }
+}
 });
 
 window.addEventListener('keyup', function (e) {
@@ -99,7 +118,15 @@ window.addEventListener('keyup', function (e) {
 
 
 
-
+function powerButton() {
+    powerButtonStatus = 'ON';
+    numberInput = '';
+    numbers = [];
+    operator = undefined;
+    result = undefined;
+    lastNumberInput = undefined;
+    display.innerText = '0';
+};
 
 function numbersButton(number) {
     if (String(Number(numberInput)).replace(/[^0-9]/g, '').length < 9) {
