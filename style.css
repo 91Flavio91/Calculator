@@ -110,6 +110,7 @@ body {
     color: black;
     font-size: 25px;
     font-weight: bold;
+    user-select: none;
 
     transition: 0.01s;
 }
