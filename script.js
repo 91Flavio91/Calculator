@@ -1,5 +1,6 @@
 const keys = document.querySelectorAll('#keys-container div');
 const display = document.getElementById('display');
+const keySounds = document.querySelectorAll('audio');
 
 let powerButtonStatus = 'OFF'
 let numberInput = '';
