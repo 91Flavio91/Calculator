@@ -10,7 +10,7 @@ let result = undefined;
 let lastNumberInput = undefined;
 display.innerText = '';
 
-keys.forEach(div => div.addEventListener('mousedown', function (e) {
+keys.forEach(div => div.addEventListener('mousedown', function () {
     playSounds(0);
     this.classList.add('press-div');
 
