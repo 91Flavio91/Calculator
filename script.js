@@ -136,14 +136,14 @@ function powerButton() {
     result = undefined;
     lastNumberInput = undefined;
     display.innerText = '0';
-};
+}
 
 function numbersButton(number) {
     if (String(Number(numberInput)).replace(/[^0-9]/g, '').length < 9) {
         numberInput += number;
         displayNumbers(numberInput);
     }
-};
+}
 
 function operatorsButton() {
     if (numberInput !== '' && numbers.length > 0) {
@@ -193,7 +193,7 @@ function equalButton() {
         numbers.push(result, Number(lastNumberInput));
         operate();
     }
-};
+}
 
 function decimalSeparatorButton() {
     if (!numberInput.includes('.')) {
@@ -211,14 +211,14 @@ function plusOrMinusButton() {
         numberInput = String(numberInput * -1);
         displayNumbers(numberInput);
     }
-};
+}
 
 function backspaceButton() {
     if (numberInput) {
         numberInput = numberInput.slice(0, numberInput.length - 1);
         displayNumbers(numberInput);
     }
-};
+}
 
 function operate() {
     switch (operator) {
@@ -246,7 +246,7 @@ function operate() {
             checkNumberLength();
             break;
     }
-};
+}
 
 function checkNumberLength() {
     if (result <= 999999999) {
@@ -255,7 +255,7 @@ function checkNumberLength() {
     else {
         displayNumbers(Intl.NumberFormat(undefined, { notation: 'scientific' }).format(result).replace('E', 'e'));
     }
-};
+}
 
 function displayNumbers(n) {
     if (n === '.') {
@@ -275,4 +275,4 @@ function displayNumbers(n) {
     else {
         display.innerText = Number(n);
     }
-};
+}
