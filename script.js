@@ -22,36 +22,36 @@ keys.forEach(div => div.addEventListener('mousedown', function () {
 
     if (powerButtonStatus === 'ON') {
 
-    switch (this.className) {
-        case 'numbers press-div':
-            numbersButton(this.innerText);
-            break;
+        switch (this.className) {
+            case 'numbers press-div':
+                numbersButton(this.innerText);
+                break;
 
-        case 'operators press-div':
-            operatorsButton();
-            numberInput = '';
-            operator = this.attributes[3].value;
-            break;
+            case 'operators press-div':
+                operatorsButton();
+                numberInput = '';
+                operator = this.attributes[3].value;
+                break;
+        }
+
+        switch (this.id) {
+            case 'decimal-separator':
+                decimalSeparatorButton();
+                break;
+
+            case 'plus-or-minus':
+                plusOrMinusButton();
+                break;
+
+            case 'equal':
+                equalButton();
+                break;
+
+            case 'CE':
+                backspaceButton();
+                break;
+        }
     }
-
-    switch (this.id) {
-        case 'decimal-separator':
-            decimalSeparatorButton();
-            break;
-
-        case 'plus-or-minus':
-            plusOrMinusButton();
-            break;
-
-        case 'equal':
-            equalButton();
-            break;
-
-        case 'CE':
-            backspaceButton();
-            break;
-    }
-}
 }));
 
 keys.forEach(div => div.addEventListener('mouseup', function () {
@@ -76,42 +76,42 @@ window.addEventListener('keydown', function (e) {
 
     if (powerButtonStatus === 'ON') {
 
-    switch (e.key) {
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-        case '8':
-        case '9':
-        case '0':
-            numbersButton(e.key);
-            break;
+        switch (e.key) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '0':
+                numbersButton(e.key);
+                break;
 
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-            operatorsButton();
-            numberInput = '';
-            operator = e.key;
-            break;
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                operatorsButton();
+                numberInput = '';
+                operator = e.key;
+                break;
 
-        case '=':
-            equalButton();
-            break;
+            case '=':
+                equalButton();
+                break;
 
-        case '.':
-            decimalSeparatorButton();
-            break;
+            case '.':
+                decimalSeparatorButton();
+                break;
 
-        case 'Backspace':
-            backspaceButton();
-            break;
+            case 'Backspace':
+                backspaceButton();
+                break;
+        }
     }
-}
 });
 
 window.addEventListener('keyup', function (e) {
